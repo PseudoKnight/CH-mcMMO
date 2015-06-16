@@ -2,7 +2,7 @@ CH-mcMMO
 ========
 Compiling
 ---------
-To compile CH-mcMMO, use Maven:
+To compile CH-mcMMO, use [Maven](https://maven.apache.org/download.cgi):
 
     mvn clean package install
 You can also download the latest jar, already compiled, [here](https://dl.dropboxusercontent.com/u/8521871/hosted/builds/CH-mcMMO/CH-mcMMO-0.0.2.jar).

@@ -1,5 +1,11 @@
 CH-mcMMO
 ========
+Compiling
+---------
+To compile CH-mcMMO, use Maven:
+
+    mvn clean package install
+You can also download the latest jar, already compiled, [here](https://dl.dropboxusercontent.com/u/8521871/hosted/builds/CH-mcMMO/CH-mcMMO-0.0.2.jar).
 How to Install
 ---------
  1. Make sure you are running a recent version of Spigot or Bukkit.  New versions can be built using BuildTools.jar ([instructions from Spigot here](http://www.spigotmc.org/wiki/buildtools/)).

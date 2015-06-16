@@ -3,7 +3,6 @@ package me.bbark9.mcMMO.functions;
 import com.gmail.nossr50.api.ExperienceAPI;
 import com.gmail.nossr50.api.exceptions.InvalidPlayerException;
 import com.gmail.nossr50.datatypes.skills.SkillType;
-import com.laytonsmith.abstraction.bukkit.BukkitMCPlayer;
 import com.laytonsmith.annotations.api;
 import com.laytonsmith.core.CHVersion;
 import com.laytonsmith.core.Static;
@@ -17,6 +16,7 @@ import com.laytonsmith.core.environments.Environment;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 import com.laytonsmith.core.functions.AbstractFunction;
 import com.laytonsmith.core.functions.Exceptions.ExceptionType;
+import com.laytonsmith.abstraction.bukkit.entities.BukkitMCPlayer;
 
 public class Get {
 

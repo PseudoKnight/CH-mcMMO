@@ -1,12 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package me.bbark9.mcMMO.functions;
 
 import com.gmail.nossr50.api.ExperienceAPI;
 import com.gmail.nossr50.datatypes.skills.SkillType;
-import com.laytonsmith.abstraction.bukkit.BukkitMCPlayer;
 import com.laytonsmith.annotations.api;
 import com.laytonsmith.core.CHVersion;
 import com.laytonsmith.core.Static;
@@ -17,6 +12,7 @@ import com.laytonsmith.core.environments.Environment;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 import com.laytonsmith.core.functions.AbstractFunction;
 import com.laytonsmith.core.functions.Exceptions;
+import com.laytonsmith.abstraction.bukkit.entities.BukkitMCPlayer;
 
 /**
  *
@@ -69,7 +65,7 @@ public class Add {
             
             ExperienceAPI.addLevel(player._Player(), skill.name(), amount);
 
-            return new CVoid(t);
+            return CVoid.VOID;
         }
 
         public String getName() {
@@ -128,7 +124,7 @@ public class Add {
             
             ExperienceAPI.addXP(player._Player(), skill.name(), amount);
 
-            return new CVoid(t);
+            return CVoid.VOID;
         }
 
         public String getName() {

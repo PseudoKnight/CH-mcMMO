@@ -18,7 +18,7 @@ public class MMOListener implements Listener {
 
     public MMOListener(CommandHelperPlugin plugin) {
         this.plugin = plugin;
-        plugin.registerEvent(this);
+        plugin.registerEvents(this);
     }
 
     public void unregister() {

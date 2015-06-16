@@ -3,7 +3,7 @@ CH-mcMMO
 How to Install
 ---------
  1. Make sure you are running a recent version of Spigot or Bukkit.  New versions can be built using BuildTools.jar ([instructions from Spigot here](http://www.spigotmc.org/wiki/buildtools/)).
- 2. Install CommandHelper and mcMMO into your plugins folder.  CommandHelper can be downloaded from [here](http://builds.enginehub.org/job/commandhelper/last-successful?branch=master).  mcMMO is currently a premium Spigot resource, and costs $10.61 to [download from Spigot](http://www.spigotmc.org/resources/mcmmo.2445/).  If you'd prefer to not pay, you can compile it yourself for free using Maven (source on GitHub).
+ 2. Install CommandHelper and mcMMO into your plugins folder.  CommandHelper can be downloaded from [here](http://builds.enginehub.org/job/commandhelper/last-successful?branch=master).  mcMMO is currently a premium Spigot resource, and costs $10.61 to [download from Spigot](http://www.spigotmc.org/resources/mcmmo.2445/).  If you'd prefer to not pay, you can compile it yourself for free using Maven ([source on GitHub](https://github.com/mcMMO-Dev/mcMMO)).
  3. Run the server once with the CommandHelper.jar and mcMMO.jar in the plugins folder.
  4. Download the latest CH-mcMMO.jar [here](https://dl.dropboxusercontent.com/u/8521871/hosted/builds/CH-mcMMO/CH-mcMMO-0.0.2.jar), or compile it from the [source](https://github.com/gfrung4/CH-mcMMO/) using Maven.
  4. Open the directory **plugins/CommandHelper/extensions** and place the CH-mcMMO.jar you downloaded there.
@@ -11,7 +11,7 @@ How to Install
 
 Getting Started
 ---------
-To test things out, open your aliases.msa folder and add in the following alias:
+To test things out, open your **aliases.msa** file and add in the following alias:
 
     /skills = msg(mcmmo_get())
 Run **/reloadaliases** in game to load the change in, and then run **/skills**.  You should see an array of your skills in chat, like this:
@@ -20,7 +20,8 @@ Run **/reloadaliases** in game to load the change in, and then run **/skills**. 
 
 If you see this, everything was installed correctly and CommandHelper is properly connected with mcMMO.  The complete documentation is below to help you get to writing some awesome scripts!
 
-<br>
+> At the time of writing, mcMMO has 13 parent skills and 2 child skills.  Some notes about the skills you'll see:
+> 
 > **Note:** The skills **salvage** and **smelting** are "child skills".  They are not leveled up directly.  The player's **salvage** level is the average of their **fishing** and **repair** levels, and the player's **smelting** level is the average of their **repair** and **mining** levels.  Because these skills do not have their own experience and levels, attempting to use the exp/level functions on them will throw a stack trace.  The extension does not currently handle this gracefully.
 > 
 > **Note:** The skill **power** listed in mcmmo_get() is simply the total of all other skills, except for **salvage** and **smelting** (because these are "child skills", as mentioned above, counting them in **power** would be essentially double counting other skills).  You cannot set the level of **power**, as it is not actually a skill.

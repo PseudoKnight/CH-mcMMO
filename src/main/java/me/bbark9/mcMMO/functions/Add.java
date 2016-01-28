@@ -9,9 +9,11 @@ import com.laytonsmith.core.constructs.CVoid;
 import com.laytonsmith.core.constructs.Construct;
 import com.laytonsmith.core.constructs.Target;
 import com.laytonsmith.core.environments.Environment;
+import com.laytonsmith.core.exceptions.CRE.CRENotFoundException;
+import com.laytonsmith.core.exceptions.CRE.CRERangeException;
+import com.laytonsmith.core.exceptions.CRE.CREThrowable;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 import com.laytonsmith.core.functions.AbstractFunction;
-import com.laytonsmith.core.functions.Exceptions;
 import com.laytonsmith.abstraction.bukkit.entities.BukkitMCPlayer;
 
 /**
@@ -37,8 +39,8 @@ public class Add {
             return CHVersion.V3_3_1;
         }
         
-        public Exceptions.ExceptionType[] thrown() {
-            return new Exceptions.ExceptionType[]{};
+        public Class<? extends CREThrowable>[] thrown() {
+            return new Class[]{CRERangeException.class,CRENotFoundException.class};
         }
 
         public Construct exec(Target t, Environment environment,
@@ -52,14 +54,14 @@ public class Add {
             try {
                 skill = SkillType.valueOf(args[1].val().toUpperCase());
             } catch (Exception e) {
-                throw new ConfigRuntimeException("Unknown McMMO skilltype for mcmmo_add_level, " + args[1].val(), Exceptions.ExceptionType.NotFoundException, t);
+                throw new CRENotFoundException("Unknown McMMO skilltype for mcmmo_add_level, " + args[1].val(), t);
             }
             
             if (args.length == 3) {
                 try {
                     amount = Integer.parseInt(args[2].val());
                 } catch (Exception e) {
-                    throw new ConfigRuntimeException("Bad amount for mcmmo_add_level, " + args[2].val(), Exceptions.ExceptionType.RangeException, t);
+                    throw new CRERangeException("Bad amount for mcmmo_add_level, " + args[2].val(), t);
                 }
             }
             
@@ -96,8 +98,8 @@ public class Add {
             return CHVersion.V3_3_1;
         }
         
-        public Exceptions.ExceptionType[] thrown() {
-            return new Exceptions.ExceptionType[]{};
+        public Class<? extends CREThrowable>[] thrown() {
+            return new Class[]{CRERangeException.class};
         }
 
         public Construct exec(Target t, Environment environment,
@@ -111,14 +113,14 @@ public class Add {
             try {
                 skill = SkillType.valueOf(args[1].val().toUpperCase());
             } catch (Exception e) {
-                throw new ConfigRuntimeException("Unknown McMMO skilltype for mcmmo_add_exp, " + args[1].val(), Exceptions.ExceptionType.RangeException, t);
+                throw new CRERangeException("Unknown McMMO skilltype for mcmmo_add_exp, " + args[1].val(), t);
             }
             
             if (args.length == 3) {
                 try {
                     amount = Integer.parseInt(args[2].val());
                 } catch (Exception e) {
-                    throw new ConfigRuntimeException("Bad amount for mcmmo_add_exp, " + args[2].val(), Exceptions.ExceptionType.RangeException, t);
+                    throw new CRERangeException("Bad amount for mcmmo_add_exp, " + args[2].val(), t);
                 }
             }
             

@@ -5,13 +5,13 @@ Compiling
 To compile CH-mcMMO, use [Maven](https://maven.apache.org/download.cgi):
 
     mvn clean package install
-You can also download the latest jar, already compiled, [here](https://dl.dropboxusercontent.com/u/8521871/hosted/builds/CH-mcMMO/CH-mcMMO-0.0.2.jar).
+You can also download the latest jar, already compiled, [here](https://letsbuild.net/jenkins/job/CH-mcMMO/).
 How to Install
 ---------
  1. Make sure you are running a recent version of Spigot or Bukkit.  New versions can be built using BuildTools.jar ([instructions from Spigot here](http://www.spigotmc.org/wiki/buildtools/)).
  2. Install CommandHelper and mcMMO into your plugins folder.  CommandHelper can be downloaded from [here](http://builds.enginehub.org/job/commandhelper/last-successful?branch=master).  mcMMO is currently a premium Spigot resource, and costs $10.61 to [download from Spigot](http://www.spigotmc.org/resources/mcmmo.2445/).  If you'd prefer to not pay, you can compile it yourself for free using Maven ([source on GitHub](https://github.com/mcMMO-Dev/mcMMO)).
  3. Run the server once with the CommandHelper.jar and mcMMO.jar in the plugins folder.
- 4. Download the latest CH-mcMMO.jar [here](https://dl.dropboxusercontent.com/u/8521871/hosted/builds/CH-mcMMO/CH-mcMMO-0.0.2.jar), or compile it from the [source](https://github.com/gfrung4/CH-mcMMO/) using Maven.
+ 4. Download the latest CH-mcMMO.jar [here](https://letsbuild.net/jenkins/job/CH-mcMMO/), or compile it from the [source](https://github.com/gfrung4/CH-mcMMO/) using Maven.
  4. Open the directory **plugins/CommandHelper/extensions** and place the CH-mcMMO.jar you downloaded there.
  5. Restart the server, you're good to go!
 

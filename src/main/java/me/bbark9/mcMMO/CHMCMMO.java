@@ -1,24 +1,26 @@
 package me.bbark9.mcMMO;
 
-import org.bukkit.event.Listener;
-import com.laytonsmith.annotations.shutdown;
-import com.laytonsmith.annotations.startup;
+import com.laytonsmith.PureUtilities.SimpleVersion;
+import com.laytonsmith.PureUtilities.Version;
+import com.laytonsmith.core.LifeCycle;
 import com.laytonsmith.commandhelper.CommandHelperPlugin;
-import me.bbark9.mcMMO.events.LevelUp;
 
-public class CHMCMMO implements Listener {
+public class CHMCMMO extends LifeCycle {
 
     static MMOListener listener;
-    static LevelUp event;
 
-    @startup
-    public static void setup() {
+    public Version getVersion() {
+        return new SimpleVersion(0,1,0);
+    }
+
+    @Override
+    public void onStartup() {
         CommandHelperPlugin chp = CommandHelperPlugin.self;
         listener = new MMOListener(chp);
     }
 
-    @shutdown
-    public static void unload() {
+    @Override
+    public void onShutdown() {
         listener.unregister();
     }
 }

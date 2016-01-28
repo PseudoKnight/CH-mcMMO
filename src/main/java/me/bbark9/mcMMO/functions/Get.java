@@ -13,9 +13,11 @@ import com.laytonsmith.core.constructs.Construct;
 import com.laytonsmith.core.constructs.Target;
 import com.laytonsmith.core.environments.CommandHelperEnvironment;
 import com.laytonsmith.core.environments.Environment;
+import com.laytonsmith.core.exceptions.CRE.CREInsufficientArgumentsException;
+import com.laytonsmith.core.exceptions.CRE.CRENotFoundException;
+import com.laytonsmith.core.exceptions.CRE.CREThrowable;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 import com.laytonsmith.core.functions.AbstractFunction;
-import com.laytonsmith.core.functions.Exceptions.ExceptionType;
 import com.laytonsmith.abstraction.bukkit.entities.BukkitMCPlayer;
 
 public class Get {
@@ -37,9 +39,9 @@ public class Get {
         public CHVersion since() {
             return CHVersion.V3_3_1;
         }
-        
-        public ExceptionType[] thrown() {
-            return new ExceptionType[]{};
+
+        public Class<? extends CREThrowable>[] thrown() {
+            return new Class[]{CREInsufficientArgumentsException.class,CRENotFoundException.class};
         }
 
         public Construct exec(Target t, Environment environment,
@@ -61,7 +63,7 @@ public class Get {
                 name = player.getName();
             } catch (ConfigRuntimeException e) {
                 if (args.length == 0) {
-                    throw new ConfigRuntimeException("You need to specify a player.", ExceptionType.InsufficientArgumentsException, t);
+                    throw new CREInsufficientArgumentsException("You need to specify a player.", t);
                 }
                 // Player is offline, we'll use the given string name later.
                 name = args[0].val();
@@ -76,7 +78,7 @@ public class Get {
                 try {
                     power = ExperienceAPI.getPowerLevelOffline(name);
                 } catch (InvalidPlayerException e) {
-                    throw new ConfigRuntimeException("Unknown McMMO player, " + name, ExceptionType.NotFoundException, t);
+                    throw new CRENotFoundException("Unknown McMMO player, " + name, t);
                 }
             }
             
@@ -90,7 +92,7 @@ public class Get {
                     try {
                         level = ExperienceAPI.getLevelOffline(name, skillname.toString());
                     } catch (InvalidPlayerException e) {
-                        throw new ConfigRuntimeException("Unknown McMMO player, " + name, ExceptionType.NotFoundException, t);
+                        throw new CRENotFoundException("Unknown McMMO player, " + name, t);
                     }
                 }
 
@@ -133,9 +135,9 @@ public class Get {
         public CHVersion since() {
             return CHVersion.V3_3_1;
         }
-        
-        public ExceptionType[] thrown() {
-            return new ExceptionType[]{};
+
+        public Class<? extends CREThrowable>[] thrown() {
+            return new Class[]{CREInsufficientArgumentsException.class,CRENotFoundException.class};
         }
 
         public Construct exec(Target t, Environment environment,
@@ -157,7 +159,7 @@ public class Get {
                 name = player.getName();
             } catch (ConfigRuntimeException e) {
                 if (args.length == 0) {
-                    throw new ConfigRuntimeException("You need to specify a player.", ExceptionType.InsufficientArgumentsException, t);
+                    throw new CREInsufficientArgumentsException("You need to specify a player.", t);
                 }
                 
                 // Player is offline, we'll use the given string name later.
@@ -183,7 +185,7 @@ public class Get {
                     try {
                         level = ExperienceAPI.getOfflineXP(name, skillname.toString());
                     } catch (InvalidPlayerException e) {
-                        throw new ConfigRuntimeException("Unknown McMMO player, " + name, ExceptionType.NotFoundException, t);
+                        throw new CRENotFoundException("Unknown McMMO player, " + name, t);
                     }
                 }
 
@@ -224,9 +226,9 @@ public class Get {
         public CHVersion since() {
             return CHVersion.V3_3_1;
         }
-        
-        public ExceptionType[] thrown() {
-            return new ExceptionType[]{};
+
+        public Class<? extends CREThrowable>[] thrown() {
+            return new Class[]{CREInsufficientArgumentsException.class,CRENotFoundException.class};
         }
 
         public Construct exec(Target t, Environment environment,
@@ -248,7 +250,7 @@ public class Get {
                 name = player.getName();
             } catch (ConfigRuntimeException e) {
                 if (args.length == 0) {
-                    throw new ConfigRuntimeException("You need to specify a player.", ExceptionType.InsufficientArgumentsException, t);
+                    throw new CREInsufficientArgumentsException("You need to specify a player.", t);
                 }
                 
                 // Player is offline, we'll use the given string name later.
@@ -272,7 +274,7 @@ public class Get {
                     try {
                         level = ExperienceAPI.getOfflineXPToNextLevel(name, skillname.toString());
                     } catch (InvalidPlayerException e) {
-                        throw new ConfigRuntimeException("Unknown McMMO player, " + name, ExceptionType.NotFoundException, t);
+                        throw new CRENotFoundException("Unknown McMMO player, " + name, t);
                     }
                 }
 
@@ -314,9 +316,9 @@ public class Get {
         public CHVersion since() {
             return CHVersion.V3_3_1;
         }
-        
-        public ExceptionType[] thrown() {
-            return new ExceptionType[]{};
+
+        public Class<? extends CREThrowable>[] thrown() {
+            return new Class[]{};
         }
 
         public Construct exec(Target t, Environment environment,
@@ -328,7 +330,7 @@ public class Get {
             
             for (SkillType skillname : SkillType.values()) {
                 CString skill = new CString(skillname.name(), t);
-                skills.push(skill);
+                skills.push(skill, t);
             }
 
             return skills;

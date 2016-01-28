@@ -2,10 +2,10 @@ package me.bbark9.mcMMO;
 
 import com.laytonsmith.PureUtilities.SimpleVersion;
 import com.laytonsmith.PureUtilities.Version;
-import com.laytonsmith.core.LifeCycle;
 import com.laytonsmith.commandhelper.CommandHelperPlugin;
+import com.laytonsmith.core.extensions.AbstractExtension;
 
-public class CHMCMMO extends LifeCycle {
+public class CHMCMMO extends AbstractExtension {
 
     static MMOListener listener;
 
